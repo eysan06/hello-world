@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sqlmap-2.dtd">
+<sqlMap namespace="user">
+	<typeAlias alias="UserClass" type="ph.com.cpi.models.User" />
+
+	<resultMap id="getUserMap" class="UserClass">
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="first_name" property="firstName" />
+	</resultMap>
+	
+	<select id="getUser" resultMap="getUserMap">
+		SELECT username, password, first_name
+		FROM tbl_users
+		WHERE username = #username#
+		AND password = #password#
+	</select>
+</sqlMap>
+	
